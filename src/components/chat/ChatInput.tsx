@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.md,
-    paddingBottom: 34,
+    paddingBottom: 5,
     backgroundColor: colors.background,
   },
   inputCard: {
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     paddingLeft: spacing.xl,
     paddingRight: 6,
-    paddingVertical: spacing.sm,
+    paddingVertical: spacing.xs,
   },
   input: {
     flex: 1,

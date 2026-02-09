@@ -107,7 +107,12 @@ const ActionSheetContent: React.FC<ActionSheetContentProps> = ({
       ]}
     >
       {options.type === "clearChat" ? null : (
-        <Handle width={30} height={4} backgroundColor="#D6D3D1" paddingVertical={10} />
+        <Handle
+          width={30}
+          height={4}
+          backgroundColor="#D6D3D1"
+          paddingVertical={10}
+        />
       )}
       {/* Avatar */}
       {options.title && (
@@ -266,21 +271,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  sheet: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "transparent", // 🔴 important
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    zIndex: 101,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: -4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 16,
-    elevation: 10,
-  },
+
   divider: {
     flexDirection: "row",
     alignItems: "center",
@@ -306,6 +297,9 @@ const styles = StyleSheet.create({
   sheetContent: {
     position: "relative",
     marginHorizontal: 16, // ⬅️ gap on left & right
+    flex: 1,
+    justifyContent: "flex-end",
+    marginBottom: 15,
   },
   optionChatSheet: {
     borderRadius: 24,
