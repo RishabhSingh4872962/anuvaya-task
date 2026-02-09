@@ -7,6 +7,8 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import { colors } from "../theme/colors";
+import { spacing } from "../theme/spacing";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -18,12 +20,10 @@ import Animated, {
   LinearTransition,
 } from "react-native-reanimated";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import { Message, Astrologer } from "./types";
+import { Message, Astrologer } from "../types/types";
 import ChatHeader from "./ChatHeader";
 import { scheduleOnRN } from "react-native-worklets";
-
 import CheckIcon from "react-native-vector-icons/Feather";
-
 import ChatInput from "./ChatInput";
 import ChatMessageList from "./ChatMessageList";
 
@@ -183,7 +183,7 @@ const ChatScreen: React.FC<ChatScreenProps> = ({
                 <CheckIcon name="check" color={"#14B8A6"} />
                 <CheckIcon
                   name="check"
-                  color={"#14B8A6c"}
+                  color={"#14B8A6"}
                   style={styles.checkStyle}
                 />
               </View>
@@ -233,76 +233,18 @@ const ChatScreen: React.FC<ChatScreenProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#F0F0F0",
-    paddingTop: 50, // Safe area
-  },
-  backButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: "#F5F5F5",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  backIcon: {
-    fontSize: 24,
-    color: "#333",
-  },
-  profileInfo: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    marginLeft: 12,
-  },
-  avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
-  nameContainer: {
-    marginLeft: 10,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#1A1A1A",
-  },
-  title: {
-    fontSize: 12,
-    color: "#888",
-  },
-  settingsButton: {
-    width: 36,
-    height: 36,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  settingsIcon: {
-    fontSize: 20,
-    color: "#333",
+    backgroundColor: colors.background,
   },
   dateSeparator: {
     alignItems: "center",
-    paddingVertical: 16,
+    paddingVertical: spacing.xl,
   },
   dateText: {
     fontSize: 12,
-    color: "#888",
-  },
-  messagesList: {
-    paddingHorizontal: 16,
-    paddingBottom: 16,
+    color: colors.timestamp,
   },
   messageRow: {
-    marginBottom: 12,
+    marginBottom: spacing.lg,
     alignItems: "flex-start",
   },
   messageRowUser: {
@@ -310,16 +252,16 @@ const styles = StyleSheet.create({
   },
   messageBubble: {
     maxWidth: "80%",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    paddingHorizontal: spacing.xl,
+    paddingVertical: spacing.lg,
     borderRadius: 20,
   },
   userBubble: {
-    backgroundColor: "#F5A623",
+    backgroundColor: colors.userBubbleColor,
     borderBottomRightRadius: 4,
   },
   astrologerBubble: {
-    backgroundColor: "#F5F5F5",
+    backgroundColor: colors.astrologerBubbleColor,
     borderBottomLeftRadius: 4,
   },
   messageText: {
@@ -330,22 +272,22 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
   },
   astrologerText: {
-    color: "#1A1A1A",
+    color: colors.textPrimary,
   },
   timestampContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 4,
-    marginRight: 4,
+    marginTop: spacing.sm,
+    marginRight: spacing.sm,
   },
   timestamp: {
     fontSize: 11,
-    color: "#888",
+    color: colors.timestamp,
   },
   readIndicator: {
     fontSize: 11,
-    color: "#14B8A6",
-    marginLeft: 4,
+    color: colors.readStatusColor,
+    marginLeft: spacing.sm,
   },
   checkStyle: { marginTop: -8 },
   replyIcon: {
@@ -353,7 +295,7 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 15,
-    backgroundColor: "#F0F0F0",
+    backgroundColor: colors.replyIconBg,
     justifyContent: "center",
     alignItems: "center",
     top: "50%",
@@ -371,8 +313,8 @@ const styles = StyleSheet.create({
   },
   replyPreview: {
     flexDirection: "row",
-    marginBottom: 8,
-    paddingBottom: 8,
+    marginBottom: spacing.md,
+    paddingBottom: spacing.md,
     borderBottomWidth: 1,
     borderBottomColor: "rgba(255,255,255,0.3)",
   },
@@ -380,135 +322,12 @@ const styles = StyleSheet.create({
     width: 3,
     backgroundColor: "#FFF",
     borderRadius: 2,
-    marginRight: 8,
+    marginRight: spacing.md,
   },
   replyPreviewText: {
     fontSize: 13,
     color: "rgba(255,255,255,0.8)",
     flex: 1,
-  },
-  replyBarContainer: {
-    backgroundColor: "rgba(255,255,255,0.8)",
-    borderTopLeftRadius: 15,
-    borderLeftWidth: 2,
-    borderTopRightRadius: 15,
-    borderLeftColor: "#F5A623",
-  },
-  replyBarContent: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 7,
-    paddingVertical: 9,
-  },
-  replyBarLine: {
-    width: 3,
-    height: 36,
-    backgroundColor: "#F5A623",
-    borderRadius: 2,
-  },
-  replyBarTextContainer: {
-    flex: 1,
-    marginLeft: 12,
-  },
-  replyBarLabel: {
-    fontSize: 12,
-    color: "#F5A623",
-    fontWeight: "600",
-  },
-  replyBarText: {
-    fontSize: 14,
-    color: "#666",
-    marginTop: 2,
-  },
-  cancelReply: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: "#E0E0E0",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  cancelReplyIcon: {
-    fontSize: 12,
-    color: "white",
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    paddingHorizontal: 16,
-    paddingTop: 10,
-    paddingBottom: 34,
-    backgroundColor: "#FFFFFF",
-  },
-  input: {
-    flex: 1,
-    fontSize: 15,
-    color: "#1C1917",
-    maxHeight: 90,
-    paddingVertical: 6,
-  },
-
-  inputWithReply: {
-    minHeight: 44,
-  },
-  attachButton: {
-    width: 58,
-    height: 58,
-    borderRadius: 33,
-    borderColor: "#E4E4E4",
-    backgroundColor: "#f5f5f4",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 10,
-  },
-
-  attachIcon: {
-    fontSize: 26,
-    color: "#57534E",
-  },
-
-  inputCard: {
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: "#F5F5F4",
-    borderRadius: 24,
-    overflow: "hidden",
-    borderWidth: 1,
-    borderColor: "#E4E4E4",
-    padding: 6,
-  },
-  inputRow: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    paddingLeft: 16,
-    paddingRight: 6,
-    paddingVertical: 5,
-  },
-
-  sendButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: "#FED7AA",
-    justifyContent: "center",
-    alignItems: "center",
-    marginLeft: 6,
-  },
-
-  sendIcon: {
-    fontSize: 18,
-    color: "#FFFFFF",
-    fontWeight: "600",
-  },
-
-  inputWrapper: {
-    flex: 1,
-    backgroundColor: "#F5F5F5",
-    borderRadius: 20,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    marginRight: 8,
-    maxHeight: 100,
   },
 });
 

@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import { Message } from "@/src/components/types/types";
+import { spacing } from "../theme/spacing";
 
 interface ChatMessageProps {
   messages: Message[];
@@ -38,7 +39,7 @@ export default ChatMessageList;
 
 const styles = StyleSheet.create({
   messagesList: {
-    paddingHorizontal: 16,
-    paddingBottom: 16,
+    paddingHorizontal: spacing.xl,
+    paddingBottom: spacing.xl,
   },
 });

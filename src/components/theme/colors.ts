@@ -18,4 +18,21 @@ export const colors = {
   // colors.ts (append only)
   destructive: "#DC2626",
   shadow: "#00000029",
+  
+  // Icon sentiment colors
+  iconExperience: "#D036FA",
+  iconEducation: "#2EA200",
+  iconAge: "#CBB0144D",
+  
+  // UI element colors
+  inputBackground: "#F5F5F4",
+  inputBorder: "#E4E4E4",
+  sendButtonActive: "#F97316",
+  sendButtonInactive: "#FED7AA",
+  replyIconBg: "#F0F0F0",
+  replyBorderColor: "#F5A623",
+  userBubbleColor: "#F5A623",
+  astrologerBubbleColor: "#F5F5F4",
+  readStatusColor: "#14B8A6",
+  inputPlaceholder: "#A8A29E",
 };

@@ -21,6 +21,7 @@ import {
 import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import { ActionSheet, ActionSheetAction } from "../types/types";
 import { ActionSheetContext } from "./ActionSheetApi";
+import Handle from "../handle/Handle";
 
 export const astrologerImages = {
   icon: require("../../assets/astrologer/astrologericon.png"),
@@ -106,9 +107,7 @@ const ActionSheetContent: React.FC<ActionSheetContentProps> = ({
       ]}
     >
       {options.type === "clearChat" ? null : (
-        <View style={styles.handleContainer}>
-          <View style={styles.handle} />
-        </View>
+        <Handle width={30} height={4} backgroundColor="#D6D3D1" paddingVertical={10} />
       )}
       {/* Avatar */}
       {options.title && (
@@ -189,7 +188,6 @@ export const ActionSheetProvider: React.FC<ActionSheetProviderProps> = ({
   }, [options]);
 
   const showActionSheet = useCallback((newOptions: ActionSheet) => {
-
     Keyboard.dismiss();
     setOptions(newOptions);
     bottomSheetRef.current?.snapToIndex(0);

@@ -10,11 +10,11 @@
  */
 
 import React, { useState, useCallback } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {  StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import ChatScreen from "./ChatScreen";
 import { ActionSheetProvider } from "../action-sheet/ActionSheetProvider";
-import { Message, Astrologer } from "./types";
+import { Message, Astrologer } from "../types/types";
 import { useActionSheet } from "../action-sheet/ActionSheetApi";
 import TrashIcon from "react-native-vector-icons/EvilIcons";
 
