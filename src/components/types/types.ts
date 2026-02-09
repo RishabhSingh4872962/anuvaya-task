@@ -1,10 +1,19 @@
-import { ActionSheet } from "@/src/components/types/types";
+import React from "react";
 
 export interface ChatMessageSenderProps {
   message: string;
   time: string;
   isRead: boolean;
 }
+
+/**
+ * REACT NATIVE TYPES
+ * Core type definitions for Chat application
+ */
+
+// ============================================
+// MESSAGE TYPES
+// ============================================
 
 export interface Message {
   id: string;
@@ -41,6 +50,14 @@ export interface ActionSheetAction {
   title: string;
   icon: React.ReactNode;
   onPress: () => void | Promise<void>;
+}
+
+export interface ActionSheet {
+  title?: string;
+  description?: string;
+  actions: ActionSheetAction[];
+  highlightIndex?: number;
+  type?: "clearChat" | "default"; // Add this line
 }
 
 export interface ActionSheetContextType {
